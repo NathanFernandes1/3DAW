@@ -18,7 +18,6 @@ $x = 0;
             $linhas[] = fgets($arqDisc);
             $colunaDados = explode(";", $linhas[$x]);
         
-            // Verifica se o array tem pelo menos 3 elementos antes de acessar seus índices
             if (count($colunaDados) >= 3) {
                 $nome = $colunaDados[0];
                 $sigla = $colunaDados[1];
