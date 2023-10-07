@@ -1,7 +1,7 @@
 <?php
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     $arqProdut = fopen("produtos.txt", "r") or die("erro ao criar arquivo");
-        $arqCarrin = fopen("carrinho.txt", "w") or die("erro ao criar arquivo");
+        $arqCarrin = fopen("carrinho.txt", "a") or die("erro ao criar arquivo");
         $x = 0;
        
 		$linhas[] = fgets($arqProdut);
@@ -13,17 +13,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     while (!feof($arqProdut)) {
 			$linhas[] = fgets($arqProdut);
 			$colunaDados = explode(";", $linhas[$x]);
-			if (count($colunaDados) >= 3) {
+			if (count($colunaDados) == 3) {
                 $id = $colunaDados[0];
                 $nome = $colunaDados[1];
                 $valor = $colunaDados[2];
 
 
-            if($id==$idbusca){
+            if(($id==$idbusca)&&($quant>0)){
 
-               $linha = $id . ";" . $nome . ";" . $quant . ";".$valor . ";" . "\n";
+               $linha = $id . ";" . $nome . ";" . $quant . ";".$valor;
                 fwrite($arqCarrin,$linha);
-    fclose($arqDados);
+    fclose($arqProdut);
 
 
                 fclose($arqCarrin);
