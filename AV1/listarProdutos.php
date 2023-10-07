@@ -1,30 +1,30 @@
 <?php
-//if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-$sigla = "";
-$carga = "";
-$nome = "";
-
-$arqProdut = fopen("produtos.txt", "r+") or die("erro ao criar arquivo");
+$arqProdut = fopen("produtos.txt", "r") or die("erro ao criar arquivo");
 $x = 0;
-       
-        $nume=0;
-		$linhas[] = fgets($arqProdut);
-        
-        echo "<h2>ID NOME VALOR</h2>";
-        while (!feof($arqProdut)) {
-            $linhas[] = fgets($arqProdut);
-            $colunaDados = explode(";", $linhas[$x]);
-        
-                $id = $colunaDados[0];
-                $nome = $colunaDados[1];
-                $valor = $colunaDados[2];
-        
-                echo "<tr>";
-                echo "<td>" . $id . "&nbsp;","</td>";
-                echo "<td>" . $nome . "&nbsp;","</td>";
-                echo "<td>" . $valor . "&nbsp;","</td>";
-                
-                echo '<select name="quantidade">
+$linhas[] = fgets($arqProdut);
+
+echo "<table>";
+echo "<tr>";
+echo "<th>ID</th>";
+echo "<th>NOME</th>";
+echo "<th>VALOR</th>";
+echo "</tr>";
+
+while (!feof($arqProdut)) {
+    $linhas[] = fgets($arqProdut);
+    $colunaDados = explode(";", $linhas[$x]);
+
+    $id = $colunaDados[0];
+    $nome = $colunaDados[1];
+    $valor = $colunaDados[2];
+
+    echo "<tr>";
+    echo "<td>" . $id . "</td>";
+    echo "<td>" . $nome . "</td>";
+    echo "<td>" ."R$". $valor . "</td>";
+    echo '<td><form action="adicionarCarrinho.php" method="GET">
+            <input type="hidden" name="id" value="' . $id . '">
+            <select name="quantidade">
                 <option value="1">0</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
@@ -36,20 +36,17 @@ $x = 0;
                 <option value="8">8</option>
                 <option value="9">9</option>
                 <option value="10">10</option>
-            </select>';
+            </select>
+            <button type="submit">Adicionar produto</button>
+        </form></td>';
+    echo "</tr>";
 
-                
-                echo '<form action="adicionarCarrinho.php" method="GET">
-                <input type="hidden" name="id" value="'.$id.'">
-                <button type="submit">Adicionar produto</button>
-                </form><br><br>';
-            
-        
-            $x++;
-        
-            
-
-            
+    $x++;
+}
+echo "</table>";
 fclose($arqProdut);
-    //}
+echo '<form action="listarCarrinho.php">
+        <input type="hidden">
+        <button type="submit">Ver Carrinho</button>
+                </form>'
 ?>
