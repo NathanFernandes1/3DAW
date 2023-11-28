@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Alterar Dados</title>
+    <script src="alterarDados.js"></script>
+</head>
+<body>
+    <h1>Alterar Dados</h1>
+    <br>
+        <a href="incluirAlunoJs.html">Inserir Aluno</a><br>
+        <a href="alterarDadosJs.html">Alterar Aluno</a><br>
+        <a href="listarAlunosJs.html">Listar Alunos</a><br>
+        <a href="excluirAlunoJs.html">Excluir Aluno</a><br>
+        <a href="detalheAlunoJs.html">Detalhe de Aluno</a><br>
+<br>
+    <div id="pedir" style="display:block">
+        <form action="" method=POST name="formAluno" id="formAluno">
+            Matricula: <input type="text"name="pedeMatricula" id="pedeMatricula" required>
+            <input type="submit" value="pedir">
+        </form>
+
+    </div> 
+
+    <div id="alterar" style="display:none">
+        <form action="" method=POST name="formAltera" id="formAltera">
+            <input type=hidden name="id" id="id" value="0">
+
+        Matricula: <input type=text name="matricula" id="matricula" value=""> <br>
+        Nome: <input type=text name="nome" id="nome" value=""> <br>
+        Email: <input type=text name="email" id="email" value=""> <br>
+        <br><br>
+        <input type="submit" value="Alterar" id="Alterar">
+
+        </form>
+
+    </div>
+    <p id="msg"></p>
+</body>
+</html>
