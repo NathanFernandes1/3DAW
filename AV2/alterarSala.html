@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Alterar Dados</title>
+    <script src="alterarSala.js"></script>
+</head>
+<body>
+    <h1>Alterar Dados</h1>
+    <br>
+        <a href="incluirCandidato.html">Inserir Aluno</a><br>
+        <a href="alterarSala.html">Alterar Aluno</a><br>
+        <a href="incluirFiscal.html">Listar Alunos</a><br>
+        <a href="listarCandidato.html">Excluir Aluno</a><br>
+       
+<br>
+    <div id="pedir" style="display:block">
+        <form action="" method=POST name="formAluno" id="formAluno">
+            Cpf: <input type="text"name="pedeCpf" id="pedeCpf" required>
+            <input type="submit" value="pedir">
+        </form>
+
+    </div> 
+
+    <div id="alterar" style="display:none">
+        <form action="" method=POST name="formAltera" id="formAltera">
+            <input type=hidden name="id" id="id" value="0">
+
+        Nova sala: <input type=text name="Sala" id="Sala" value=""> <br>
+       
+        <br><br>
+        <input type="submit" value="Alterar" id="Alterar">
+
+        </form>
+
+    </div>
+    <p id="msg"></p>
+</body>
+</html>
